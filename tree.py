@@ -1,35 +1,36 @@
 """tree.py"""
-from utils import Node, print_children_nodes_as_tree
+from console import print_children_nodes_as_tree
+from data_structures import Node
 
 # super node
-arad = Node("arad")
+arad = Node("arad", cost=50, heuristic=366)
 
 # arad children
-sibiu = Node("sibiu", parent=arad)
+sibiu = Node("sibiu", arad, 49, 253)
 
-timisiara = Node("timisiara", parent=arad)
+timisiara = Node("timisiara",  arad, 49, 329)
 
-zerind = Node("zerind", parent=arad)
+zerind = Node("zerind", arad, 49, 374)
 
 # sibiu's children
-fagaras = Node("fagaras", parent=sibiu)
+fagaras = Node("fagaras", sibiu, 300, 178)
 
-oradea = Node("oradea", parent=sibiu)
+oradea = Node("oradea", sibiu, 30, 380)
 
-rimmcu_vileea = Node("rimmcu_vileea", parent=sibiu)
+rimnicu_vilcea = Node("rimnicu vilcea", sibiu, 50, 193)
 
 # rimmcu vileea's children
-craiova = Node("caraiova", parent=rimmcu_vileea)
+craiova = Node("caraiova", rimnicu_vilcea, 40, 160)
 
-pitesti = Node("pitesti", parent=rimmcu_vileea)
+pitesti = Node("pitesti", rimnicu_vilcea, 60, 98)
 
 # fagaras's children
-bucharest = Node("bucharest", parent=fagaras)
+bucharest = Node("bucharest", fagaras, 30, 0)
 
 # pitesti's children
-bucharest = Node("bucharest", parent=pitesti)
+bucharest = Node("bucharest", pitesti,  20, 0)
 
-craiova = Node("caraiova", parent=pitesti)
+craiova = Node("caraiova", pitesti, 120, 160)
 
 
 def main():

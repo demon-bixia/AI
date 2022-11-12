@@ -1,16 +1,17 @@
-"""depth_first_search.py"""
+"""depth first search"""
 import tree
-from utils import Node, QueueMemory, StackMemory, print_as_tree
+from data_structures import Node, StackMemory
+from console import print_as_tree
 
 
-def find(start: Node, destination: str, mode: str = "dfs") -> list:
+def find(start: Node, destination: str) -> list:
     """
     print the destiniation using dfs
     """
     # the nodes that we explored
     explored = []
     # create the memory based on the mode
-    memory = StackMemory() if mode == "dfs" else QueueMemory()
+    memory = StackMemory()
     # add start node to memory
     memory.add(start)
 
@@ -50,7 +51,7 @@ def main():
     # find the solution
     start: Node = getattr(tree, "arad")
     destination = "bucharest"
-    solution = find(start, destination, 'bfs')
+    solution = find(start, destination)
 
     # print the original tree
     print("original tree:\n")
