@@ -6,31 +6,31 @@ from data_structures import Node
 arad = Node("arad", cost=50, heuristic=366)
 
 # arad children
-sibiu = Node("sibiu", arad, 49, 253)
+sibiu = Node("sibiu", arad, 140, 253)
 
-timisiara = Node("timisiara",  arad, 49, 329)
+timisoara = Node("timisiara",  arad, 118, 329)
 
-zerind = Node("zerind", arad, 49, 374)
+zerind = Node("zerind", arad, 75, 374)
 
 # sibiu's children
-fagaras = Node("fagaras", sibiu, 300, 178)
+fagaras = Node("fagaras", sibiu, 99, 178)
 
-oradea = Node("oradea", sibiu, 30, 380)
+oradea = Node("oradea", sibiu, 71, 380)
 
-rimnicu_vilcea = Node("rimnicu vilcea", sibiu, 50, 193)
+rimnicu_vilcea = Node("rimnicu vilcea", sibiu, 80, 193)
 
 # rimmcu vileea's children
-craiova = Node("caraiova", rimnicu_vilcea, 40, 160)
+craiova = Node("caraiova", rimnicu_vilcea, 146, 160)
 
-pitesti = Node("pitesti", rimnicu_vilcea, 60, 98)
+pitesti = Node("pitesti", rimnicu_vilcea, 97, 98)
 
 # fagaras's children
-bucharest = Node("bucharest", fagaras, 30, 0)
+bucharest = Node("bucharest", fagaras, 211, 0)
 
 # pitesti's children
-bucharest = Node("bucharest", pitesti,  20, 0)
+bucharest = Node("bucharest", pitesti,  101, 0)
 
-craiova = Node("caraiova", pitesti, 120, 160)
+craiova = Node("caraiova", pitesti, 138, 160)
 
 
 def main():

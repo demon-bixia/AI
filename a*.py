@@ -1,9 +1,7 @@
-"""
-uniform cost search
-"""
+"""A* search algorithm"""
 import tree
-from data_structures import Node, PathCostMemory
 from console import print_as_tree
+from data_structures import Node, AStarMemory
 
 
 def find(start: Node, destination: str) -> list:
@@ -13,7 +11,7 @@ def find(start: Node, destination: str) -> list:
     # the nodes that we explored
     explored = []
     # create the memory based on the mode
-    memory = PathCostMemory()
+    memory = AStarMemory()
     # add start node to memory
     memory.add(start)
 

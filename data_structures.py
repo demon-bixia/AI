@@ -25,6 +25,12 @@ class Node:
         """
         return len(self.children) > 0
 
+    def add_child(self, child):
+        """
+        add a child to this parent node
+        """
+        self.children.append(child)
+
 
 class Memory:
     """
@@ -89,7 +95,7 @@ class QueueMemory(Memory):
             return node
 
 
-class LowCostMemory(Memory):
+class PathCostMemory(Memory):
     """
     the memory uniform cost search uses
     """
@@ -143,7 +149,7 @@ class LowCostMemory(Memory):
         return (minimum_cost_node, minimum_cost_node_index)
 
 
-class QueueMemory(Memory):
+class HeuristicMemory(Memory):
     """
     Memory used by greedy best first algorithm
     """
@@ -155,14 +161,14 @@ class QueueMemory(Memory):
         if self.empty():
             raise Exception("empty memory")
         else:
-            best_node, node_index = self.get_node_based_on_heuristic()
+            best_node, node_index = self.get_best_node()
 
             # remove the node from the memory
             self.memory.pop(node_index)
 
             return best_node
 
-    def get_node_based_on_heuristic(self):
+    def get_best_node(self):
         """
         return the node with best heuristic value
         """
@@ -171,6 +177,26 @@ class QueueMemory(Memory):
 
         for index, node in enumerate(self.memory):
             if node.heuristic > best_node.heuristic:
+                best_node = node
+                best_node_index = index
+
+        return (best_node, best_node_index)
+
+
+class AStarMemory(HeuristicMemory):
+    """
+    Memory used by a star search algorithm
+    """
+
+    def get_best_node(self):
+        """
+        return the node with based on h(n) + g(n)
+        """
+        best_node = self.memory[0]
+        best_node_index = 0
+
+        for index, node in enumerate(self.memory):
+            if node.heuristic + node.cost > best_node.heuristic + best_node.cost:
                 best_node = node
                 best_node_index = index
 
