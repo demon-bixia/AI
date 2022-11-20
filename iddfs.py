@@ -48,6 +48,7 @@ def find(start: Node, destination: str) -> list:
             start, destination, index)
 
         if found_node:
+            print("found at depth: ", index)
             return find_solution(start, found_node)
 
         print("not found at depth: ", index)

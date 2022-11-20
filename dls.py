@@ -25,7 +25,7 @@ def depth_limited_search(start: Node, destination: str, max_depth: int):
             return found_node
 
 
-def find(start: Node, destination: str, max_depth: int) -> list:
+def find(start: Node, destination: str, max_depth: int = 5) -> list:
     """
     print the destiniation using iddfs
     using recursion

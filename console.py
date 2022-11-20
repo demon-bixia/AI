@@ -26,6 +26,29 @@ def build_tree(node: Node):
     return parent_tree
 
 
+def build_solution_tree(node: Node, solution: list):
+    """
+    collect the children of the node in rich tree
+    """
+    # create the tree
+    tree = Tree('Node Tree')
+
+    # add the name of the node to the tree
+    if node in solution:
+        parent_tree = tree.add(
+            f'[green]{node.name} [green]b({node.cost}) [green]h({node.heuristic})')
+    else:
+        parent_tree = tree.add(
+            f'{node.name} b({node.cost}) h({node.heuristic})')
+
+    # check
+    if node.has_children():
+        for child in node.children:
+            parent_tree.add(build_solution_tree(child, solution))
+
+    return parent_tree
+
+
 def print_as_tree(printable: Union[list, Node]):
     """
     print a list or node as a tree
@@ -59,6 +82,16 @@ def print_list_as_tree(node_list: list):
     for index, item in enumerate(node_list):
         if index > 0:
             child_tree = child_tree.add(
-                f'[green]{item.name} cost({item.cost}) heuristic({item.heuristic})')
+                f'[green]{item.name} b({item.cost}) h({item.heuristic})')
 
+    rich_print(tree)
+
+
+def print_solution(first_node: Node, solution: list):
+    """
+    highlight the correct path green
+    """
+    tree = build_solution_tree(first_node, solution)
+
+    # rich print the tree
     rich_print(tree)
